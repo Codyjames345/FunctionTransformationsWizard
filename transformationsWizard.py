@@ -6,17 +6,19 @@
 # add a README
 # add support for other function formats like 1/x and sin(x)
 # add check for different powers
-# allow spaces between terms
 # more idiot-proofing
 # simplify steps including variables
 # allow user entry of object function and transformation steps and return image function
 
 import re
 
-def FindSeq(obj, img): # define function
+def FindSeq(obj_s, img_s): # define function
+
+    # strip whitespace from both inputs
+    obj = re.sub(r'\s+', '', obj_s)
+    img = re.sub(r'\s+', '', img_s)
 
     # get variables from object and image
-    
     a = re.search(r"(\-*[a-zA-Z0-9.]+)\(", obj)
     ad = re.search(r"(\-*[a-zA-Z0-9.]+)\(", img)
     b = re.search(r"(\-*[a-zA-Z0-9.]+)x", obj)
