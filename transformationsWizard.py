@@ -1,22 +1,21 @@
-# Function Transformations Wizard (FTW™) V1.0
-# cultivated by Cody Lincoln and Stack Overflow
-# I really hope CAS has regex
+# Function Transformations Wizard (FTW™) V1.1
+# created by Cody Lincoln with the supervision of Stack Overflow
 
-# TODO
-# add a README
-# add support for other function formats like 1/x and sin(x)
-# add check for different powers
-# more idiot-proofing
-# simplify steps including variables
-# allow user entry of object function and transformation steps and return image function
+import re # import Python RegEx library
 
-import re
+def SanitiseInput(rawInput): # define SanitiseInput funciton
 
-def FindSeq(obj_s, img_s): # define function
+    # strip whitespace from inputs
+    cleanInput = re.sub(r'\s+', '', rawInput)
 
-    # strip whitespace from both inputs
-    obj = re.sub(r'\s+', '', obj_s)
-    img = re.sub(r'\s+', '', img_s)
+    #TODO
+
+    return cleanInput
+
+def FindSeq(obj_s, img_s): # define FindSeq function
+
+    # call SanitiseInput function on both the object and image
+    obj, img = SanitiseInput(obj_s), SanitiseInput(img_s)
 
     # get variables from object and image
     a = re.search(r"(\-*[a-zA-Z0-9.]+)\(", obj)
