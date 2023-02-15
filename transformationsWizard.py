@@ -1,21 +1,31 @@
-# Function Transformations Wizard (FTW™) V1.1
+# Function Transformations Wizard (FTW™) V1.2
 # created by Cody Lincoln with the supervision of Stack Overflow
 
 import re # import Python RegEx library
 
 def SanitiseInput(rawInput): # define SanitiseInput funciton
 
+    funcName = None # initialise function name
+
     # strip whitespace from inputs
     cleanInput = re.sub(r'\s+', '', rawInput)
+    if "=" in rawInput:
+        # get equation after equals sign to prevent f(x) notation triggering the RegEx
+        # update function name with content before equals sign
+        funcName, cleanInput = rawInput.split("=")
 
-    #TODO
+    #TODO more sanitisation
 
-    return cleanInput
+    return [funcName, cleanInput] # return function name and sanitised input in a list
 
-def FindSeq(obj_s, img_s): # define FindSeq function
+def FindSeq(obj_raw, img_raw): # define FindSeq function
 
     # call SanitiseInput function on both the object and image
-    obj, img = SanitiseInput(obj_s), SanitiseInput(img_s)
+    obj_san, img_san = SanitiseInput(obj_raw), SanitiseInput(img_raw)
+    
+    # store function name and equation (after equals sign)
+    obj_func, obj = obj_san
+    img_func, img = img_san
 
     # get variables from object and image
     a = re.search(r"(\-*[a-zA-Z0-9.]+)\(", obj)
@@ -113,13 +123,16 @@ def FindSeq(obj_s, img_s): # define FindSeq function
     except ValueError:
         steps.append(f"Translate ({kd}*{a}-{k}*{ad})/{a} up") # variable was entered
 
-    return steps # return list of calculated steps
+    return [obj_func, img_func, steps] # return function names and list of calculated steps
 
 print("Enter all equations in the form y = a(bx-h)**n+k")
 obj = input("Enter the object: ")
 img = input("Enter the image: ") # input object and image functions from user
 
-steps = FindSeq(obj, img) # get list of steps from function
+obj_func, img_func, steps = FindSeq(obj, img) # get function names and list of steps from FindSeq function
+
+if obj_func and img_func:
+    print(f"Steps required to transform {obj_func} --> {img_func}")
 
 if not steps:
     print("No transformations required bruh") # no steps were added because you entered the same function twice you goofball

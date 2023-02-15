@@ -2,7 +2,7 @@
 Allows entry of an object and image function and returns the transformation steps required.
 
 
-Function Transformations Wizard (FTW™) V1.1
+Function Transformations Wizard (FTW™) V1.2
 created by Cody Lincoln with the supervision of Stack Overflow
 
 The program asks for two user inputs - the object and image functions - and returns a list of steps required to transform the object into the image.
@@ -15,15 +15,20 @@ Instructions
 - run with any Python interpreter.
 
 TODO
-- revise maths (some wrong answers)
 - add support for other function formats like 1/x and sin(x)
 - add check for different powers
 - more idiot-proofing
 - simplify steps including variables
-- allow user entry of object function and transformation steps and return image function
 - fix RegEx matches
+- allow no brackets in cases like x**2
+- allow user entry of object function and transformation steps and return image function (V2 Update)
 
 Changelog
+
+V1.2 - The Horse Update
+- separated function name from equation
+- added support for f(x) notation
+- added header before steps showing function names
 
 V1.1 - Redstone Update
 - separate SanitiseInput function created
