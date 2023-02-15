@@ -1,4 +1,4 @@
-# Function Transformations Wizard (FTW™) V1.2
+# Function Transformations Wizard (FTW™) V1.2.1
 ## created by Cody Lincoln for personal usage
 
 The program asks for two user inputs - the object and image functions - and returns a list of steps required to transform the object into the image.
@@ -23,9 +23,13 @@ TODO
 - [ ] simplify steps including variables
 - [ ] fix RegEx matches
 - [ ] allow no brackets in cases like x**2
+- [ ] support fractions in both user input and function output whn applicable
 - [ ] allow user entry of object function and transformation steps and return image function (V2 Update)
 
 Changelog
+
+V1.2.1 - Snapshot Update
+- fixed variable reference in SanitiseInput function
 
 V1.2 - The Horse Update
 - separated function name from equation

@@ -1,4 +1,4 @@
-# Function Transformations Wizard (FTW™) V1.2
+# Function Transformations Wizard (FTW™) V1.2.1
 # created by Cody Lincoln with the supervision of Stack Overflow
 
 import re # import Python RegEx library
@@ -9,7 +9,7 @@ def SanitiseInput(rawInput): # define SanitiseInput funciton
 
     # strip whitespace from inputs
     cleanInput = re.sub(r'\s+', '', rawInput)
-    
+
     if "=" in rawInput:
         # get equation after equals sign to prevent f(x) notation triggering the RegEx
         # update function name with content before equals sign
