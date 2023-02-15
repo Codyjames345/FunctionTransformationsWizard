@@ -1,6 +1,5 @@
-# FunctionTransformationsWizard
-## Function Transformations Wizard (FTW™) V1.2
-## created by Cody Lincoln with the supervision of Stack Overflow
+# Function Transformations Wizard (FTW™) V1.2
+## created by Cody Lincoln for personal usage
 
 The program asks for two user inputs - the object and image functions - and returns a list of steps required to transform the object into the image.
 I started building this as a fun project but I would like to see it finished one day.
