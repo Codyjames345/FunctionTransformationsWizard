@@ -9,10 +9,11 @@ def SanitiseInput(rawInput): # define SanitiseInput funciton
 
     # strip whitespace from inputs
     cleanInput = re.sub(r'\s+', '', rawInput)
+    
     if "=" in rawInput:
         # get equation after equals sign to prevent f(x) notation triggering the RegEx
         # update function name with content before equals sign
-        funcName, cleanInput = rawInput.split("=")
+        funcName, cleanInput = cleanInput.split("=")
 
     #TODO more sanitisation
 
