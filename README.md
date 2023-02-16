@@ -29,8 +29,6 @@ Future Release
 - [ ] allow variables other than x to be used
 - [ ] allow input of unknown variables
 - [ ] allow user entry of object function and transformation steps and return image function (V3 Update)
-
-Scrapped Features
 - [ ] simplify steps including variables
 
 Changelog
