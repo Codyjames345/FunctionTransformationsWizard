@@ -24,7 +24,6 @@ Planned Features
 - [ ] integrate simplification process
 - [ ] support fractions in both user input and function output when applicable
 
-
 Future Release
 - [ ] allow variables other than x to be used
 - [ ] allow input of unknown variables
