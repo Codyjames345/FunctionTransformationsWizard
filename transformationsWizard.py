@@ -1,7 +1,22 @@
-# Function Transformations Wizard (FTW™) V1.2.1
+# Function Transformations Wizard (FTW™) V2.0b
 # created by Cody Lincoln with the supervision of Stack Overflow
 
 import re # import Python RegEx library
+
+def GrabXY(func): # define GrabXY function
+
+    # grab x terms with RegEx or operators for multiple function formats
+    x_match = re.compile(r"[(|]([^)|]*x+[^)|]*)[|)]|(x)") # this actually grabs the x terms correctly 99% of the time lol
+
+    # grab y terms with RegEx or operators for multiple function formats
+    y_match = re.compile(r"([a-zA-Z]*[(|][^)|]*x+[^)|]*[|)](?:\*\*[0-9.]+)*)|(x)")
+
+    x_part = re.search(x_match, func).group(1) # get all x (horizontal) transformations
+    y_part = re.sub(y_match, "f", func) # replace x portion with "f" which leaves y (vertical) transformations
+
+    base_func = None # TODO grab base function
+
+    return [base_func, x_part, y_part] # return base function, and separated x and y portions
 
 def SanitiseInput(rawInput): # define SanitiseInput funciton
 
@@ -28,7 +43,13 @@ def FindSeq(obj_raw, img_raw): # define FindSeq function
     obj_func, obj = obj_san
     img_func, img = img_san
 
+    # grab separated x and y parts from GrabXY function
+    obj_base_func, obj_x_part, obj_y_part = GrabXY(obj)
+    img_base_func, img_x_part, img_y_part = GrabXY(img)
+
     # get variables from object and image
+    # TODO get rid of spaghetti RegEx
+    # TODO use GrabXY function
     a = re.search(r"(\-*[a-zA-Z0-9.]+)\(", obj)
     ad = re.search(r"(\-*[a-zA-Z0-9.]+)\(", img)
     b = re.search(r"(\-*[a-zA-Z0-9.]+)x", obj)
@@ -126,7 +147,8 @@ def FindSeq(obj_raw, img_raw): # define FindSeq function
 
     return [obj_func, img_func, steps] # return function names and list of calculated steps
 
-print("Enter all equations in the form y = a(bx-h)**n+k")
+# not needed for now as multiple function types are supported (beta)
+# print("Enter all equations in the form y = a(bx-h)**n+k")
 obj = input("Enter the object: ")
 img = input("Enter the image: ") # input object and image functions from user
 
